@@ -5,7 +5,86 @@
     <meta name="viewport" content="width=600,initial-scale = 2.3,user-scalable=no">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        .t-map {
+            position: relative;
+        }
+        #map {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 100%;
+            height: 304px;
+        }
+    </style>
 </head>
+<script>
+    // Инициализация гугл карты
+    function initMap() {
+        // The location of Uluru
+        let geocoder = new google.maps.Geocoder();
+        let uluru = {lat: 55.543684, lng: 37.525328};
+        // The map, centered at Uluru
+        let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+        });
+        // The marker, positioned at Uluru
+        let marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+
+        // Лишний кусок
+        // geocoder.geocode( { 'address': '{{ destination }}' }, function (results, status) {
+        //     if (status == 'OK') {
+        //         map.setCenter(results[0].geometry.location);
+        //         var marker = new google.maps.Marker({
+        //             map: map,
+        //             position: results[0].geometry.location
+        //         });
+        //     } else {
+        //         document.getElementById('map').style.display = 'none';
+        //     }
+        // });
+
+        let infoWnd = new google.maps.InfoWindow({
+            // Обратные кавычки не работали в IE, пришлось так переносить
+            content:
+                '<div class="t-schedule__work">' +
+                '<span class="t-main-name" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 500;">График работы:</span>' +
+                '<span class="t-main-description" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 400;">пн-пт 10:00 - 20:00</span>' +
+                '<span class="t-main-description" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 400;">сб-вс 10:00 - 16:00</span>' +
+                '</div>' +
+                '<div class="t-schedule__tel">' +
+                '<span class="t-main-name" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 500;">Телефон для связи:</span>' +
+                '<span class="t-main-description" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 400;">8-499-390-58-53</span>' +
+                '</div>'
+        });
+        infoWnd.open(map, marker);
+    }
+
+    // Открытие тултипа
+    function tooltipHandler () {
+
+        let toolTip = document.querySelector('.js-t-tooltip');
+
+        let toolTipBlock = document.querySelector('.t-tooltip-block');
+
+        toolTip.addEventListener('click', function () {
+            toolTipBlock.classList.toggle('t-tooltip_hidden');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!toolTip.contains(e.target) && !toolTipBlock.contains(e.target)) {
+                toolTipBlock.classList.add('t-tooltip_hidden');
+            }
+        });
+
+    }
+
+    tooltipHandler();
+</script>
+
 <body>
 <table width="100%" align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;font-family: Arial, Helvetica, sans-serif;">
     <tbody>
@@ -116,7 +195,9 @@
                         <table bgcolor="" align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                             <tr>
                                 <td align="left" valign="top">
-                                    <img src="./map.png" alt="">
+                                    <div class="t-map">
+                                        <div id="map" style="width: 100%; max-width: 100%; height: 304px;"></div>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -167,5 +248,8 @@
     </tr>
     </tbody>
 </table>
+
+<script type="text/javascript" src="./app.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGRRmzA7On2NzeN28cy2ULhkETtrgJcFY&callback=initMap"></script>
 </body>
 </html>
