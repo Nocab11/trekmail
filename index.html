@@ -7,41 +7,7 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
-<script type="text/javascript">
-    // Инициализация гугл карты
-    function initMap() {
-        // The location of Uluru
-        let geocoder = new google.maps.Geocoder();
-        let uluru = {lat: 55.543684, lng: 37.525328};
-        // The map, centered at Uluru
-        let map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: uluru
-        });
-        // The marker, positioned at Uluru
-        let marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });
 
-        let infoWnd = new google.maps.InfoWindow({
-
-            content:
-                '<div class="t-schedule__work">' +
-                '<span class="t-main-name" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 500;">График работы:</span>' +
-                '<span class="t-main-description" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 400;">пн-пт 10:00 - 20:00</span>' +
-                '<span class="t-main-description" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 400;">сб-вс 10:00 - 16:00</span>' +
-                '</div>' +
-                '<div class="t-schedule__tel">' +
-                '<span class="t-main-name" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 500;">Телефон для связи:</span>' +
-                '<span class="t-main-description" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 400;">8-499-390-58-53</span>' +
-                '</div>'
-        });
-
-        infoWnd.open(map, marker);
-    }
-
-</script>
 
 <body>
 <table width="100%" align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;font-family: Arial, Helvetica, sans-serif;">
@@ -226,9 +192,8 @@
                         <table bgcolor="" align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                             <tr>
                                 <td align="left" valign="top">
-                                    <div class="t-map">
-                                        <div id="map" style="width: 100%; max-width: 100%; height: 304px;"></div>
-                                    </div>
+                                    <!-- https://staticmapmaker.com/google/ -->
+                                    <img width="560" src="https://maps.googleapis.com/maps/api/staticmap?center=г.+Москва,+ул.+Южнобутовская,+29&zoom=12&scale=1&size=560x304&maptype=roadmap&key=AIzaSyDGRRmzA7On2NzeN28cy2ULhkETtrgJcFY&callback=initMap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:%7Cг.+Москва,+ул.+Южнобутовская,+29" alt="Google Map of г. Москва, ул. Южнобутовская, 29">
                                 </td>
                             </tr>
                         </table>
@@ -292,6 +257,5 @@
     </tbody>
 </table>
 
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGRRmzA7On2NzeN28cy2ULhkETtrgJcFY&callback=initMap"></script>
 </body>
 </html>
