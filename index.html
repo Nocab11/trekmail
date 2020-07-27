@@ -1,23 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html lang="en">
+<html lang="ru">
 <head>
+    <title>Статус заказа</title>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
     <meta name="viewport" content="width=600,initial-scale = 2.3,user-scalable=no">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style>
-        .t-map {
-            position: relative;
-        }
-        #map {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 100%;
-            height: 304px;
-        }
-    </style>
 </head>
-<script>
+<script type="text/javascript">
     // Инициализация гугл карты
     function initMap() {
         // The location of Uluru
@@ -34,21 +24,8 @@
             map: map
         });
 
-        // Лишний кусок
-        // geocoder.geocode( { 'address': '{{ destination }}' }, function (results, status) {
-        //     if (status == 'OK') {
-        //         map.setCenter(results[0].geometry.location);
-        //         var marker = new google.maps.Marker({
-        //             map: map,
-        //             position: results[0].geometry.location
-        //         });
-        //     } else {
-        //         document.getElementById('map').style.display = 'none';
-        //     }
-        // });
-
         let infoWnd = new google.maps.InfoWindow({
-            // Обратные кавычки не работали в IE, пришлось так переносить
+
             content:
                 '<div class="t-schedule__work">' +
                 '<span class="t-main-name" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 500;">График работы:</span>' +
@@ -60,29 +37,10 @@
                 '<span class="t-main-description" style="display: block; font-style: normal; font-size: 16px; line-height: 20px; font-weight: 400;">8-499-390-58-53</span>' +
                 '</div>'
         });
+
         infoWnd.open(map, marker);
     }
 
-    // Открытие тултипа
-    function tooltipHandler () {
-
-        let toolTip = document.querySelector('.js-t-tooltip');
-
-        let toolTipBlock = document.querySelector('.t-tooltip-block');
-
-        toolTip.addEventListener('click', function () {
-            toolTipBlock.classList.toggle('t-tooltip_hidden');
-        });
-
-        document.addEventListener('click', function (e) {
-            if (!toolTip.contains(e.target) && !toolTipBlock.contains(e.target)) {
-                toolTipBlock.classList.add('t-tooltip_hidden');
-            }
-        });
-
-    }
-
-    tooltipHandler();
 </script>
 
 <body>
@@ -156,8 +114,9 @@
                                         <tr>
                                             <td style="padding-right: 10px;">
                                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABJCAYAAAA9mQYkAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKDSURBVHgB7Zc/TNNBFMffu99PI4l/Wo2DJpo2YBxcYDJuxE0XlcXBodUZCsZNavpTIW7mlwgzdHAtTOCGLgwuEo0hkWKbMDhoaSUVSGnvvLta7J+7o7Qj911+v7537/N7r5d7d4dwgMbXYx5BNip/MJh92fvmsWk8mpzx9ZjPKaONVuZN9E4918UQMH0NWURhHTPFGIGMQUBhDkCnwE5kgRZogRZogUcWqNxGE5mxAINyhFL0VX5CaPRFeDrZFjCeHr6LBGc0O97/QIQsIvWawQ0ly40dce4gmBAfE6KUzI6vxTxlhuLIgcAS0IE4xK8dUSTwWXokyhBmoAtVyuzeq6tT81Xg91iGMRZqN/jJZU+UDK83vHpzobjlhInM7hCwgVPXIeCeBXEUa1Lg5OlyhPCi7zR7Hl2MwdD5B0rgzeAt+VzKLyq8OEgYYqjZHHSDMpMbZwaV2eX3cvCp+LEFx3PuJ/zP6G92LPxK7WdTLa+d7OQMh5RLb3X7C6z++QwnSM9+6TW4LruaCAPMqhyLuRTs0h0I91yRpYtyhVI/32phfHJXCK95ReXMlzd5aQvy/fa5IZldZmcNsrtpLRARswQJe68bsPz7g4TUZMqumiGdJwhuki/0gm7QHIcUyjlYLizx56YeBpCd7JtOypUiOoxoCtCFeHZRAZSzPNEn16APHYt5AibeGvphPDOcAIoeHEK8VH+y7jLU0mCffhuJooMJ3spCZhQUeId5KDpMvVF7kxJgWtq7jw655Bx3rgkbrdANWqp8dXvcd8UtN+kP+C2TabyacV3Q2H/oAuxGb4EWaIEWaIEWeISBTGGj0AWwqLBtmwIcMKv076PH6j5QNAX8BV4n7Ncu9n5xAAAAAElFTkSuQmCC"
+                                                     border="0"
                                                      alt=""
-                                                     style=""
+                                                     style="display: block;"
                                                 >
                                             </td>
                                             <td width="190" style="background-color: #ffffff; padding-top: 16px; padding-right: 20px;  padding-bottom: 16px; padding-left: 16px;">
@@ -187,9 +146,6 @@
                                             <td style="padding-left: 10px;">
                                                 <img src="./pay.png" alt=""> <br>
                                             </td>
-                                        </tr>
-                                        <tr>
-
                                         </tr>
                                     </table>
                                     <table align="center" border="0" cellspacing="0" cellpadding="0" style="margin: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;padding-top: 10px;">
@@ -306,6 +262,6 @@
 </table>
 
 <script type="text/javascript" src="./app.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGRRmzA7On2NzeN28cy2ULhkETtrgJcFY&callback=initMap"></script>
+<script type="text/javascript" defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGRRmzA7On2NzeN28cy2ULhkETtrgJcFY&callback=initMap"></script>
 </body>
 </html>
